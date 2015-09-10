@@ -79,9 +79,9 @@ keysight; // keysight.umd.js can define keysight globally if you really
 
 Using keysight:
 
-***`keysight(event)`*** - Takes in a keyboard event from `keypress`, `keyup`, or `keydown` and returns an object that has the following properties:
-* `key` - The keyboard key pressed. Does not take into account shift, so for example if you type 'A', this will contain 'a'.
-* `char` - The character created by the key press. Takes into account shift, so if you type 'A', this will contain 'A'.
+**`keysight(event)`** - Takes in a keyboard event from `keypress`, `keyup`, or `keydown` and returns an object that has the following properties:
+* **`key`** - The keyboard key pressed. Does not take into account shift, so for example if you type 'A', this will contain 'a'.
+* **`char`** - The character created by the key press. Takes into account shift, so if you type 'A', this will contain 'A'.
            Note that in cases where there are multiple keys that give the same character, the simpler character is used (eg. if the `key` is "num_enter", `char` will be "\n")
 
 ## Special Key and character strings
