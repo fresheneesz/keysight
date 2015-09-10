@@ -1,0 +1,20 @@
+{"name":"keysight",
+ "version":"0.0.1",
+ "main":"keysight.js",
+ "description": "A translator for javascript keyboard events to and from understandable english.",
+ "keywords": [
+    "key", "keypress", "keydown", "keyup", "keycode", "char", "charcode", "which", "keyboard", "numpad", "input"
+ ],
+ "dependencies":{
+
+ },
+ "devDependencies": {
+     "deadunit": "",
+     "build-modules":"2.0.5",
+     "syn":""
+ },
+ "repository": {
+   "type": "git",
+   "url": "git://github.com/fresheneesz/keysight"
+ }
+}
