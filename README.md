@@ -67,7 +67,7 @@ Accessing keysight:
 var keysight = require('keysight')
 
 // amd
-require.config({paths: {keysight: '../generatedBuilds/keysight.umd.js'}})
+require.config({paths: {keysight: '../dist/keysight.umd.js'}})
 require(['keysight'], function(keysight) { /* your code */ })
 
 // global variable
