@@ -2,7 +2,7 @@
 `keysight`
 =====
 
-A translator for javascript keyboard events to and from understandable english.
+A translator for javascript keyboard events to and from consistent and familiar charaacter and key representations.
 Take your `keydown`, `keypress`, and `keyup` events and reliably tranlate them into keyboard keys and characters.
 Its lightweight at 1.06KB minified and gzipped.
 
