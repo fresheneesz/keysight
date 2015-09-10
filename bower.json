@@ -1,11 +1,16 @@
 {
+  "note": "Use npm for development. The devDependencies aren't on bower.",
+
   "name": "keysight",
-  "main": "keypress-2.1.3.min.js",
+  "main": "dist/keysight.umd.js",
   "homepage": "https://github.com/fresheneesz/keysight",
   "authors": [
     "Billy Tetrud"
   ],
-  "description": "A translator for javascript keyboard events to and from understandable english.",
+  "description": "A translator for javascript keyboard events to and from understandable english. ",
+  "keywords": [
+     "key", "keypress", "keydown", "keyup", "keycode", "char", "charcode", "which", "keyboard", "numpad", "input"
+  ],
   "moduleType": [
     "amd",
     "CommonJS",
@@ -22,6 +27,5 @@
     "*.iml"
   ],
   "devDependencies": {
-    "jasmine": "git://github.com/pivotal/jasmine.git#1.3.0"
   }
 }

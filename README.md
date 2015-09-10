@@ -53,6 +53,8 @@ Install
 
 ```
 npm install keysight
+// or
+bower install keysight
 ```
 
 
@@ -135,6 +137,17 @@ The string on the left is the string that represents the conceptual key/characte
 * num - num-lock
 * scroll - scroll-lock
 
+## keypress vs keydown/keyup
+
+In handling keyboard events, keydown/keyup is almost always the best choice.
+However, there is at least one case where you want keypress over keydown/keyup: cases where copy/paste is used.
+If you ctrl-v paste some text into a field, for example, a 'keydown' event will see 'shift' and 'v' pressed,
+while a keypress handler will see the actual text you pasted in.
+
+There may be other cases where keypress is necessary, but I'm not aware of them.
+
+If you do use keypress, keep in mind that the `key` value is extrapolated from the `char` value, and so may not accurately represent the key pressed.
+If you need accuracy for the `key`, use the 'keydown' event.
 
 How to Contribute!
 ============
