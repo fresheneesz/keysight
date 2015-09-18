@@ -207,5 +207,13 @@ module.exports = function(event) {
     }
 }
 
+module.exports.unprintableKeys = [
+    "\b","num","shift","meta","alt","pause","caps","esc",
+    "pageup","pagedown","end","home",
+    "left","up","right","down",
+    "print","insert","delete","cmd",
+    "f1","f2","f3","f4","f5","f6","f7","f8","f9","f10","f11","f12",
+    "scroll","ctrl",
+]
 
 
