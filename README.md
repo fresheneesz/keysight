@@ -40,7 +40,6 @@ textfield.addEventListener("keypress", function(e) {
     if(validChars.indexOf(char) === -1))
         event.preventDefault()  // prevent the character from being input
 })
-*/
 ```
 
 Motivation
