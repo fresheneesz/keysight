@@ -83,7 +83,7 @@ Using keysight:
 * **`char`** - The character created by the key press. Takes into account shift, so if you type 'A', this will contain 'A'.
            Note that in cases where there are multiple keys that give the same character, the simpler character is used (eg. if the `key` is "num_enter", `char` will be "\n")
 
-** `keysight.unprintableKeys`** - An array of unprintable keys (including backspace and delete, which do usually modify inputs)
+**`keysight.unprintableKeys`** - An array of unprintable keys (including backspace and delete, which do usually modify inputs)
 
 ## Special Key and character strings
 
