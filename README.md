@@ -83,7 +83,7 @@ Using keysight:
 * **`char`** - The character created by the key press. Takes into account shift, so if you type 'A', this will contain 'A'.
            Note that in cases where there are multiple keys that give the same character, the simpler character is used (eg. if the `key` is "num_enter", `char` will be "\n")
 
-** `keysight.unprintableKeys`** - An array of unprintable keys (including backspace and delete, which do usually modify inputs)
+**`keysight.unprintableKeys`** - A map of unprintable keys (including backspace and delete, which do usually modify inputs) where each object-key is the name of an unprintable keyboard-key
 
 ## Special Key and character strings
 
@@ -175,6 +175,9 @@ How to submit pull requests:
 Change Log
 =========
 
+* 0.1.0 - BREAKING CHANGES
+  * Attempting to support non-latin characters (eg accented characters)
+  * Changing `unprintableKeys` to a map.
 * 0.0.2 - Adding `unprintableKeys` array.
 * 0.0.1 - first commit!
 

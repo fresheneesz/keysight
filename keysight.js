@@ -60,47 +60,49 @@ var keydownKeycodeDictionary = {
     45: "insert",
     46: "delete",
 
-    48: "0",
-    49: "1",
-    50: "2",
-    51: "3",
-    52: "4",
-    53: "5",
-    54: "6",
-    55: "7",
-    56: "8",
-    57: "9",
+    // 48-90
 
-    59: ";",
-
-    61: "=",
-
-    65: "a",
-    66: "b",
-    67: "c",
-    68: "d",
-    69: "e",
-    70: "f",
-    71: "g",
-    72: "h",
-    73: "i",
-    74: "j",
-    75: "k",
-    76: "l",
-    77: "m",
-    78: "n",
-    79: "o",
-    80: "p",
-    81: "q",
-    82: "r",
-    83: "s",
-    84: "t",
-    85: "u",
-    86: "v",
-    87: "w",
-    88: "x",
-    89: "y",
-    90: "z",
+//    48: "0",
+//    49: "1",
+//    50: "2",
+//    51: "3",
+//    52: "4",
+//    53: "5",
+//    54: "6",
+//    55: "7",
+//    56: "8",
+//    57: "9",
+//
+//    59: ";",
+//
+//    61: "=",
+//
+//    65: "a",
+//    66: "b",
+//    67: "c",
+//    68: "d",
+//    69: "e",
+//    70: "f",
+//    71: "g",
+//    72: "h",
+//    73: "i",
+//    74: "j",
+//    75: "k",
+//    76: "l",
+//    77: "m",
+//    78: "n",
+//    79: "o",
+//    80: "p",
+//    81: "q",
+//    82: "r",
+//    83: "s",
+//    84: "t",
+//    85: "u",
+//    86: "v",
+//    87: "w",
+//    88: "x",
+//    89: "y",
+//    90: "z",
     91: "cmd",   // 'left window key'
     92: "cmd",   // 'right window key'
     93: "cmd",   // 'select key'
@@ -159,6 +161,12 @@ var keydownKeycodeDictionary = {
     63289: "num"
 };
 
+var keydownKeycodeReverseDictionary = {}
+for(var x in keydownKeycodeDictionary) {
+    var name = keydownKeycodeDictionary[x]
+    keydownKeycodeReverseDictionary[name] = x
+}
+
 var keypressCharacterMap = {
     '\r':'\n'
 }
@@ -177,7 +185,7 @@ function getKeypressKeycodeValue(charcode) {
     } else if(character in keypressCharacterMap) {
         return keypressCharacterMap[character]
     } else {
-        return character
+        return character.toLowerCase()
     }
 }
 
@@ -187,7 +195,11 @@ module.exports = function(event) {
         var key = getKeypressKeycodeValue(event.charCode)
     } else {
         if(event.keyCode !== undefined) {
-            var key = keydownKeycodeDictionary[event.keyCode]
+            if(event.keyCode in keydownKeycodeDictionary) {
+                var key = keydownKeycodeDictionary[event.keyCode]
+            } else {
+                var key = String.fromCharCode(event.keyCode).toLowerCase() // fall back to this in case the explicit map above doesn't cover something
+            }
         } else if(event.charCode === 0) {
             var key = '\n'
         }
@@ -195,11 +207,15 @@ module.exports = function(event) {
 
     if(event.shiftKey && key in keycodeShiftedKeys) {
         var char = keycodeShiftedKeys[key]
+    } else if(event.shiftKey && !(key in keydownKeycodeReverseDictionary)) {
+        var char = key.toUpperCase() // fallback
     } else if(key in keydownCharacterMap) {
         var char = keydownCharacterMap[key]
     } else {
         var char = key
     }
+
+
 
     return {
         char: char,
@@ -207,13 +223,13 @@ module.exports = function(event) {
     }
 }
 
-module.exports.unprintableKeys = [
-    "\b","num","shift","meta","alt","pause","caps","esc",
-    "pageup","pagedown","end","home",
-    "left","up","right","down",
-    "print","insert","delete","cmd",
-    "f1","f2","f3","f4","f5","f6","f7","f8","f9","f10","f11","f12",
-    "scroll","ctrl",
-]
+module.exports.unprintableKeys = {
+    "\b":1,"num":1,"shift":1,"meta":1,"alt":1,"pause":1,"caps":1,"esc":1,
+    "pageup":1,"pagedown":1,"end":1,"home":1,
+    "left":1,"up":1,"right":1,"down":1,
+    "print":1,"insert":1,"delete":1,"cmd":1,
+    "f1":1,"f2":1,"f3":1,"f4":1,"f5":1,"f6":1,"f7":1,"f8":1,"f9":1,"f10":1,"f11":1,"f12":1,
+    "scroll":1,"ctrl":1,
+}
 
 

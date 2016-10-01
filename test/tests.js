@@ -7,6 +7,8 @@ var syn = require("syn")
 var testSequence = [
      // input          keydown         [keypress]
      //[syn code,    character,key,   [character,key] ]
+
+
     //*
      ["\\",    "\\","\\"],
 
@@ -72,7 +74,6 @@ var testSequence = [
      ["[shift]\'[shift-up]",    '"','\''],
 
      ["[shift-up];",    ';',';'],     // the shift-up here because apparently its still in shift mode because of a previous key event?
-     ["=",    '=','='],
 
      // syn has issues rendering correct events for these - but I tested manually and they work
 //     ["A",    'A','a'],
@@ -128,6 +129,8 @@ var testSequence = [
      ["x",    'x','x'],
      ["y",    'y','y'],
      ["z",    'z','z'],
+
+//     ["ñ",    'ñ','ñ'],   I don't think syn is creating the events for this correctly
 
        // these work for keydown but not for keypress with syn, and I don't have a numpad to test manually
 //     ["[num0]",    'num0','num0'],
@@ -206,8 +209,8 @@ module.exports = function() {
                 }
 
                 if(event.type === 'keydown') {
-                    t.eq(keysight(event).char, testSequence[n][1])
-                    t.eq(keysight(event).key, testSequence[n][2])
+                    t.eq(keysight(event).char, testSequence[n][1]) // keydown
+                    t.eq(keysight(event).key, testSequence[n][2]) // keydown
                 } else {
                     if(testSequence[n][3] !== undefined) {
                         var testChar = testSequence[n][3]
@@ -216,26 +219,40 @@ module.exports = function() {
                         var testChar = testSequence[n][1]
                         var testKey = testSequence[n][2]
                     }
-                    t.eq(keysight(event).char, testChar)
-                    t.eq(keysight(event).key, testKey)
+                    t.eq(keysight(event).char, testChar) // keypress
+                    t.eq(keysight(event).key, testKey) // keypress
                 }
             }
 
+            var firstElement = document.body.children[0]
             var element = document.createElement("input")
-            document.body.appendChild(element)
+            document.body.insertBefore(element, firstElement)
             var element2 = document.createElement("div")
             element2.style.color = 'white'
-            document.body.appendChild(element2)
+            document.body.insertBefore(element2, firstElement)
 
             var keydownChar, keydownKey, kepressChar, keypressKey;
             var updateOutput = function() {
-                element2.innerText = "Keydown.char: "+keydownChar+", Keydown.key: "+keydownKey
-                                  +", Keypress.char: "+kepressChar+", Keypress.key: "+keypressKey
+                element2.innerText = "Keydown.char: "+d(keydownChar)+", Keydown.key: "+d(keydownKey)
+                                  +", Keypress.char: "+d(kepressChar)+", Keypress.key: "+d(keypressKey)
+            }
+            var d = function(key) {  // display key
+                if(key in {'\b':1,'\n':1,'\t':1}) {
+                    key = JSON.stringify(key)
+                    key = key.substr(1,key.length-2)
+                    return key
+                } else {
+                    return key
+                }
             }
 
             element.addEventListener("keydown", function(e) {
                 keydownChar = keysight(e).char
                 keydownKey = keysight(e).key
+                if(keydownKey in keysight.unprintableKeys) {
+                    kepressChar = keypressKey = ''
+                }
+
                 updateOutput()
 
                 // ignore keydown events for option buttons that are only trying to modify a character
@@ -248,6 +265,7 @@ module.exports = function() {
             element.addEventListener("keypress", function(e) {
                 kepressChar = keysight(e).char
                 keypressKey = keysight(e).key
+
                 updateOutput()
 
                 event(e)
