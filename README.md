@@ -175,9 +175,6 @@ How to submit pull requests:
 Change Log
 =========
 
-* 0.1.0 - BREAKING CHANGES
-  * Attempting to support non-latin characters (eg accented characters)
-  * Changing `unprintableKeys` to a map.
 * 0.0.2 - Adding `unprintableKeys` array.
 * 0.0.1 - first commit!
 
