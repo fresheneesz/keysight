@@ -168,7 +168,8 @@ for(var x in keydownKeycodeDictionary) {
 }
 
 var keypressCharacterMap = {
-    '\r':'\n'
+    '\r':'\n',
+    '\u0000': '\n' // In firefox keypress on enter is represented as \u0000
 }
 var keydownCharacterMap = {
     num_subtract: '-',
