@@ -11,7 +11,8 @@
  "devDependencies": {
      "deadunit": "",
      "build-modules":"2.0.5",
-     "syn":""
+     "syn":"",
+     "ajv": "6.8.1"
  },
  "repository": {
    "type": "git",
