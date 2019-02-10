@@ -2,8 +2,8 @@
 `keysight`
 =====
 
-A translator for javascript keyboard events to and from consistent and familiar charaacter and key representations.
-Take your `keydown`, `keypress`, and `keyup` events and reliably tranlate them into keyboard keys and characters.
+A translator for javascript keyboard events to and from consistent and familiar character and key representations.
+Take your `keydown`, `keypress`, and `keyup` events and reliably translate them into keyboard keys and characters.
 Its lightweight at 1.06KB minified and gzipped.
 
 Example
@@ -93,7 +93,7 @@ The string on the left is the string that represents the conceptual key/characte
 * \b - backspace key
 * \n - enter key
 * shift - the shift key
-* meta - ctrl/cmd (here 'meta' is used since the character is named different things on mac vs windows)
+* meta - ctrl/cmd (here 'meta' is used since the key is named different things on mac vs windows)
 * alt - alt key
 * pause - pause key
 * caps - caps lock key
