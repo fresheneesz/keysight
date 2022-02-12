@@ -12,7 +12,7 @@
      "deadunit": "",
      "build-modules":"2.0.5",
      "syn":"",
-     "ajv": "6.8.1"
+     "ajv": "6.12.3"
  },
  "repository": {
    "type": "git",
