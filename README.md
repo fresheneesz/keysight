@@ -82,6 +82,10 @@ Using keysight:
 * **`key`** - The keyboard key pressed. Does not take into account shift, so for example if you type 'A', this will contain 'a'.
 * **`char`** - The character created by the key press. Takes into account shift, so if you type 'A', this will contain 'A'.
            Note that in cases where there are multiple keys that give the same character, the simpler character is used (eg. if the `key` is "num_enter", `char` will be "\n")
+* **`ctrl`** - True if the 'ctrl' key is pressed.
+* **`shift`** - True if the 'shift' key is pressed.
+* **`alt`** - True if the 'alt' key is pressed.
+* **`cmd`** - True if the 'cmd' key is pressed.
 
 **`keysight.unprintableKeys`** - A map of unprintable keys (including backspace and delete, which do usually modify inputs) where each object-key is the name of an unprintable keyboard-key
 
@@ -175,6 +179,7 @@ How to submit pull requests:
 Change Log
 =========
 
+* 0.0.3 - Add ctrl, shift, alt and cmd properties to keysight return
 * 0.0.2 - Adding `unprintableKeys` array.
 * 0.0.1 - first commit!
 

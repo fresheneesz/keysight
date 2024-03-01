@@ -39,7 +39,7 @@ var keydownKeycodeDictionary = {
     13: "\n",
 
     16: "shift",
-    17: "meta",  // 'ctrl' on windows, 'cmd' on mac
+    17: "ctrl",  // 'ctrl' on windows and linux
     18: "alt",   // aka 'option'
     19: "pause", // or sometimes 'break'?
     20: "caps",
@@ -157,7 +157,7 @@ var keydownKeycodeDictionary = {
     224: "cmd",
     225: "alt",
 
-    57392: "ctrl",
+    57392: "ctrl", // ctrl on mac
     63289: "num"
 };
 
@@ -215,11 +215,13 @@ module.exports = function(event) {
         var char = key
     }
 
-
-
     return {
         char: char,
-        key: key
+        key: key,
+        shift: event.shiftKey,
+        ctrl: event.ctrlKey,
+        alt: event.altKey,
+        cmd: event.metaKey,
     }
 }
 
