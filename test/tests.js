@@ -18,7 +18,7 @@ var testSequence = [
      ["\r",    "\n","\n"],      // there is no key that yeilds '\r' on a browser
       
      ["[shift][shift-up]",    'shift','shift'],
-     ["[ctrl][ctrl-up]",    'meta','meta'],
+     ["[ctrl][ctrl-up]",    'ctrl','ctrl'],
      ["[alt][alt-up]",    'alt','alt'],   // aka 'option'
      ["[pause-break]",    'pause','pause'], // or sometimes 'break'
      ["[caps]",    'caps','caps'],

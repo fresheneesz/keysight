@@ -171,7 +171,7 @@ How to submit pull requests:
 3. clone your forked repo onto your machine and run `npm install` at its root
 4. If you're gonna work on multiple separate things, its best to create a separate branch for each of them
 5. edit!
-6. If it's a code change, please add to the unit tests (at test/tests.js) to verify that your change
+6. If it's a code change, please add to the unit tests (with `node test/testServer`) to verify that your change works.
 7. When you're done, run the unit tests and ensure they all pass
 8. Commit and push your changes
 9. Submit a pull request: https://help.github.com/articles/creating-a-pull-request
@@ -179,7 +179,7 @@ How to submit pull requests:
 Change Log
 =========
 
-* 0.0.3 - Add ctrl, shift, alt and cmd properties to keysight return
+* 0.1.0 - Add ctrl, shift, alt and cmd properties to keysight return. Note that this is a breaking change for anyone using "meta" (which has been changed to "ctrl")
 * 0.0.2 - Adding `unprintableKeys` array.
 * 0.0.1 - first commit!
 
